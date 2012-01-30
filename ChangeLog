@@ -1,0 +1,101 @@
+=== anyPaper 2.3 ===
+
+2010-26-08  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_image.c (anypaper_image_make): Changed behavior when the image file couldn't be opened and changed the value returned by the function
+	* anypaper/anypaper_window.c (set_wallpaper_common): Added error message for when the image file could not be opened
+
+2010-25-08  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c (save_default_file_cb, save_file_as_cb): Added file filter on "Default file" and "Save as..." dialog.
+	* anypaper/anypaper_preview.c (gboolean fullscreen_timeout_cb, image_fullscreen_button, gboolean mouse_motion): Added hiding scrollbars for preview window in fullscreen.
+	* anypaper/anypaper_wallpapersetter.c (anypaper_wallpapersetter_file): Updated wallpapersetter list.
+
+2010-24-08  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c (open_image_file_cb): Added file filter on "Open File" dialog.
+
+2010-23-08  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_preview.c (anypaper_preview_create): Changed the police of gtk_scrolled_window
+	* anypaper/anypaper.c (main), anypaper/anypaper_command.c (anypaper_command_load): Added error handling for file not found and command not found. Calling of function system() replaced by g_spawn_command_line_sync ().
+
+2010-16-06  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c (set_wallpaper_common): Calling of function system() replaced by g_spawn_command_line_async ().
+
+=== anyPaper 2.2 ===
+
+2010-05-01  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_image.c (anypaper_image_make, size): Fixed bug in tiled option.
+
+2010-24-04  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_wallpapersetter.c: Code clean-up.
+	* anypaper/anypaper.c (main), anypaper/anypaper_command.c (anypaper_command_load), anypaper/anypaper_command.h (entries): Added detection of wallpapersetter if wallpapersettersfile doesn't exist. Added --info and --command options.
+
+2010-12-04  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c (anypaper_window_create, detect_popup_cb): Added detect wallpapersetter button on main window and popup window for choosing the installed wallpapersetter if any one was found.
+	* anypaper/anypaper_window.c (set_wallpaper_common): Changed the way of detecting setting wallpaper error, now tests if the command exists.
+
+2010-02-04  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_wallpapersetter.c,  anypaper/anypaper_wallpapersetter.h: Added AnypaperWallpapersetter class for dectecting installed wallpapersetters.
+
+=== anyPaper 2.1 ===
+
+2009-12-22  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper.c: Fixed bug in --last option behavior.
+
+=== anyPaper 2.0 ===
+
+2009-12-13  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* all files: Major changes in software architecture and in behavior of tiled mode. Addition of "center", "Load lastwallpaper file" and "Load rc file" buttons. Addition of documentation.
+
+=== anyPaper 1.4 ===
+
+2009-05-04  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* src/image.c (refresh_color): Fixed bug with tiled style when changing background color
+
+2009-04-30  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* src/preview_window.c: Added a real size preview window
+	* src/anypaper.c: Fixed bug when cancel missing files
+
+=== anyPaper 1.3 ===
+
+2009-03-28  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* src/anypaper.c, src/function.c, src/parameters.c, image.c: Added Custom Scale style
+	* src/image.c: Added warning window when applying missing files
+
+
+=== anyPaper 1.2 ===
+
+2009-02-04  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* src/parameters.c (parameters, write_parameters, style): Fixed crash when missing parameters
+	* src/file.c, src/image.c: Added compability with jpeg format for saving files
+	* src/about.c (about_window): Update information
+	* src/anypaper.c, src/image.c, src/parameters.c, src/function.c: Added interpolation option on configuration tab
+
+=== anyPaper 1.1 ===
+
+2009-01-27  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* src/parameters.c (parameters): Fixed crash when using options lastwallpaper or rc with an inexistent file
+
+=== anyPaper 1.0 ===
+
+2008-12-29  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* all files: code clean-up
+
+	anyPaper 1.0 released
+
+	anyPaper 1.0 releasedChangeLog: A history of changes or a link to where you can find it. Automake complains if you don’t add this yourself.

@@ -1,0 +1,53 @@
+<!-- ##### SECTION Title ##### -->
+anypaper_command
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO LICENSE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION show_version_and_exit ##### -->
+<para>
+
+</para>
+
+@void: 
+
+
+<!-- ##### FUNCTION show_license_and_exit ##### -->
+<para>
+
+</para>
+
+@void: 
+
+
+<!-- ##### FUNCTION anypaper_command_load ##### -->
+<para>
+
+</para>
+
+@parameters: 
+
+

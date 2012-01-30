@@ -1,0 +1,53 @@
+<!-- ##### SECTION Title ##### -->
+AnypaperWallpapersetter
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT AnypaperWallpapersetterPrivate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT AnypaperWallpapersetter ##### -->
+<para>
+
+</para>
+
+@wallpapersetter: 
+@command: 
+
+<!-- ##### FUNCTION anypaper_wallpapersetter_detect ##### -->
+<para>
+
+</para>
+
+@wallpapersetter: 
+@filename: 
+
+
+<!-- ##### FUNCTION anypaper_wallpapersetter_file ##### -->
+<para>
+
+</para>
+
+@wallpapersetterFile: 
+
+
