@@ -2,7 +2,7 @@ bin_PROGRAMS = anypaper
 
 noinst_LTLIBRARIES = libanypaper.la
 
-INCLUDES =						\
+AM_CFLAGS =						\
 	$(ANYPAPER_CFLAGS)				\
 	$(DISABLE_DEPRECATED_CFLAGS)			\
 	-DANYPAPER_DATA=\""$(datadir)/anypaper/"\"
