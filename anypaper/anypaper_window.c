@@ -345,6 +345,16 @@ gboolean test_command_exists(gchar *command)
 	else TRUE;
 }
 
+gint interpolation_int (GdkInterpType interpolation)
+{
+	gint i;
+	if (interpolation == GDK_INTERP_NEAREST) i = 0;
+	if (interpolation == GDK_INTERP_TILES) i = 1;
+	if (interpolation == GDK_INTERP_BILINEAR) i = 2;
+	if (interpolation == GDK_INTERP_HYPER) i = 3;
+	return i;
+}
+
 /*gboolean set_wallpaper_common ( AnypaperWindow *window )
 {
 	GtkWidget *dialog;
@@ -817,17 +827,6 @@ void anypaper_window_set_position_range(AnypaperWindow *window, gint rangex, gin
 		gtk_widget_set_sensitive (window->priv->label2, TRUE);
 	}
 }
-
-gint interpolation_int (GdkInterpType interpolation)
-{
-	gint i;
-	if (interpolation == GDK_INTERP_NEAREST) i = 0;
-	if (interpolation == GDK_INTERP_TILES) i = 1;
-	if (interpolation == GDK_INTERP_BILINEAR) i = 2;
-	if (interpolation == GDK_INTERP_HYPER) i = 3;
-	return i;
-}
-
 /**
  * anypaper_window_create:
  * @window: the #AnypaperWindow

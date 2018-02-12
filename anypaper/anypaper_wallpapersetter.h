@@ -21,6 +21,7 @@
 #ifndef __ANYPAPER_WALLPAPERSETTER_H__
 #define __ANYPAPER_WALLPAPERSETTER_H__
 
+#include <glib/gstdio.h>
 #include <gtk/gtk.h>
 #include "config.h"
 #include "anypaper_parameters.h"

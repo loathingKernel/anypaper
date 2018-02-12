@@ -148,7 +148,7 @@ static gboolean mouse_motion (GtkWidget *widget, GdkEventMotion *event, Anypaper
 		timeout_destroy(preview->priv->source);
 
 		preview->priv->source = g_timeout_source_new_seconds (WINDOW_FULLSCREEN_TIMEOUT);
-		g_source_set_callback (preview->priv->source, fullscreen_timeout_cb, preview, NULL);
+		g_source_set_callback (preview->priv->source, (GSourceFunc) fullscreen_timeout_cb, preview, NULL);
 	
 		g_source_attach (preview->priv->source, NULL);
 	}

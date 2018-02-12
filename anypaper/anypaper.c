@@ -148,12 +148,12 @@ int main( int argc, char *argv[] )
 			if (g_spawn_command_line_sync (buffer, &std_out, &std_err, &exitStatus, NULL) == FALSE) g_printerr("Invalid command\n");
 			else
 			{
-				if (*std_out != NULL)
+				if (*std_out)
 				{
 					g_print ("Output:\n%s", std_out);
 					g_free (std_out);
 				}
-				if (*std_err != NULL)
+				if (*std_err)
 				{
 					g_printerr ("Error:\n%s", std_err);
 					g_free (std_err);
@@ -184,12 +184,12 @@ int main( int argc, char *argv[] )
 			/*if (system (buffer)) g_print("Invalid command\n");*/
 			else
 			{
-				if (*std_out != NULL)
+				if (*std_out)
 				{
 					g_print ("Output:\n%s", std_out);
 					g_free (std_out);
 				}
-				if (*std_err != NULL)
+				if (*std_err)
 				{
 					g_printerr ("Error:\n%s", std_err);
 					g_free (std_err);
@@ -210,12 +210,12 @@ int main( int argc, char *argv[] )
 			/*if (system (buffer)) g_print("Invalid command\n");*/
 			else
 			{
-				if (*std_out != NULL)
+				if (*std_out)
 				{
 					g_print ("Output:\n%s", std_out);
 					g_free (std_out);
 				}
-				if (*std_err != NULL)
+				if (*std_err)
 				{
 					g_printerr ("Error:\n%s", std_err);
 					g_free (std_err);
@@ -234,12 +234,12 @@ int main( int argc, char *argv[] )
 		}
 		else
 		{
-			if (*std_out != NULL)
+			if (*std_out)
 			{
 				g_print ("Output:\n%s", std_out);
 				g_free (std_out);
 			}
-			if (*std_err != NULL)
+			if (*std_err)
 			{
 				g_printerr ("Error:\n%s", std_err);
 				g_free (std_err);
