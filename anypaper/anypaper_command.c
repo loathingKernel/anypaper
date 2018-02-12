@@ -87,7 +87,7 @@ static int option_command ()
 void anypaper_command_load (AnypaperParameters *parameters)
 {
 	int e=6;
-	g_print("%s", background_color);
+
 	e=option_command();
 	if (e != 6) parameters->style = e;
 	if (remaining_args != 0)

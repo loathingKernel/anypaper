@@ -99,8 +99,10 @@ gboolean anypaper_image_make(AnypaperImage *image, AnypaperParameters *parameter
 	gdouble sx=1, sy=1, scx = 1, scy = 1;
 	gboolean openImage;
 
-	g_object_unref(image->priv->base);
-	g_object_unref(image->priv->background);
+    if (image->priv->base)
+        g_object_unref(image->priv->base);
+    if (image->priv->background)
+	    g_object_unref(image->priv->background);
 
 	md=parameters->style;
 	screenw=parameters->width;
@@ -258,8 +260,10 @@ void anypaper_image_move(AnypaperImage *image, AnypaperParameters *parameters)
 	gint ox=0, oy=0, x=0, y=0, dx=0, dy=0;
 	gdouble sx=1, sy=1;
 
-	g_object_unref(image->image);
-	g_object_unref(image->preview);
+    if (image->image)
+	    g_object_unref(image->image);
+    if (image->preview)
+	    g_object_unref(image->preview);
 
 	screenw=parameters->width;
 	screenh=parameters->height;

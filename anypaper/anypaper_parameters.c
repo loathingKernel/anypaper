@@ -123,8 +123,7 @@ void anypaper_parameters_load (AnypaperParameters *parameters, gchar *filename)
 	int i,j=0,k,t=0;
 	int par_counter=0;
 
-	printf("%d", parameters->jpegQuality);
-	
+
 	if (g_file_get_contents (filename, &other, NULL, NULL))
 	{
 		for (i=0;other[i]!=0;i++) if (other[i]=='\n') j++;
