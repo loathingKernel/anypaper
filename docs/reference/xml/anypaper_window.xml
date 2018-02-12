@@ -28,7 +28,7 @@ Stable, unless otherwise indicated
 #include &lt;anypaper_window.h&gt;
 
                     <link linkend="AnypaperWindowPrivate">AnypaperWindowPrivate</link>;
-                    <link linkend="AnypaperWindow-struct">AnypaperWindow</link>;
+struct              <link linkend="AnypaperWindow-struct">AnypaperWindow</link>;
 <link linkend="void"><returnvalue>void</returnvalue></link>                <link linkend="anypaper-window-set-position-range">anypaper_window_set_position_range</link>  (<parameter><link linkend="AnypaperWindow"><type>AnypaperWindow</type></link> *window</parameter>,
                                                          <parameter><link linkend="gint"><type>gint</type></link> rangex</parameter>,
                                                          <parameter><link linkend="gint"><type>gint</type></link> rangey</parameter>);
@@ -58,33 +58,29 @@ The application class that builds the user interface and controls the operation 
 <para>
 </para></refsect2>
 <refsect2 id="AnypaperWindow-struct" role="struct">
-<title>AnypaperWindow</title>
+<title>struct AnypaperWindow</title>
 <indexterm zone="AnypaperWindow-struct"><primary>AnypaperWindow</primary></indexterm>
-<programlisting>typedef struct {
+<programlisting>struct AnypaperWindow {
 	AnypaperParameters		*parameters;
 	AnypaperImage			*image;
 	AnypaperPreview			*preview;
 	AnypaperWallpapersetter		*wallpapersetter;
-} AnypaperWindow;
+};
 </programlisting>
 <para>
 Contains the necessary objects for operation of the anyPaper
 </para><variablelist role="struct">
 <varlistentry><term><link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>&#160;*<structfield id="AnypaperWindow-struct.parameters">parameters</structfield>;</term>
-<listitem><simpara>is a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem>
+<listitem><simpara>is a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="AnypaperImage"><type>AnypaperImage</type></link>&#160;*<structfield id="AnypaperWindow-struct.image">image</structfield>;</term>
-<listitem><simpara>is a <link linkend="AnypaperImage"><type>AnypaperImage</type></link>
-</simpara></listitem>
+<listitem><simpara>is a <link linkend="AnypaperImage"><type>AnypaperImage</type></link></simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="AnypaperPreview"><type>AnypaperPreview</type></link>&#160;*<structfield id="AnypaperWindow-struct.preview">preview</structfield>;</term>
-<listitem><simpara>is a <link linkend="AnypaperPreview"><type>AnypaperPreview</type></link>
-</simpara></listitem>
+<listitem><simpara>is a <link linkend="AnypaperPreview"><type>AnypaperPreview</type></link></simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="AnypaperWallpapersetter"><type>AnypaperWallpapersetter</type></link>&#160;*<structfield id="AnypaperWindow-struct.wallpapersetter">wallpapersetter</structfield>;</term>
-<listitem><simpara>is a <link linkend="AnypaperWallpapersetter"><type>AnypaperWallpapersetter</type></link>;
-</simpara></listitem>
+<listitem><simpara>is a <link linkend="AnypaperWallpapersetter"><type>AnypaperWallpapersetter</type></link>;</simpara></listitem>
 </varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-window-set-position-range" role="function">
@@ -97,14 +93,11 @@ Contains the necessary objects for operation of the anyPaper
 Sets the range of displacement allowed for the image.
 </para><variablelist role="params">
 <varlistentry><term><parameter>window</parameter>&#160;:</term>
-<listitem><simpara>the <link linkend="AnypaperWindow"><type>AnypaperWindow</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>the <link linkend="AnypaperWindow"><type>AnypaperWindow</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>rangex</parameter>&#160;:</term>
-<listitem><simpara>half of the displacement allowed in x direction
-</simpara></listitem></varlistentry>
+<listitem><simpara>half of the displacement allowed in x direction</simpara></listitem></varlistentry>
 <varlistentry><term><parameter>rangey</parameter>&#160;:</term>
-<listitem><simpara>half of the displacement allowed in y direction
-</simpara></listitem></varlistentry>
+<listitem><simpara>half of the displacement allowed in y direction</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-window-create" role="function">
 <title>anypaper_window_create ()</title>
@@ -114,8 +107,7 @@ Sets the range of displacement allowed for the image.
 Creates and shows the <link linkend="AnypaperWindow"><type>AnypaperWindow</type></link>.
 </para><variablelist role="params">
 <varlistentry><term><parameter>window</parameter>&#160;:</term>
-<listitem><simpara>the <link linkend="AnypaperWindow"><type>AnypaperWindow</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>the <link linkend="AnypaperWindow"><type>AnypaperWindow</type></link></simpara></listitem></varlistentry>
 </variablelist></refsect2>
 
 </refsect1>

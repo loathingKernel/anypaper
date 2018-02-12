@@ -105,6 +105,8 @@ static void anypaper_parameters_init (AnypaperParameters *self)
 	self->command = g_strdup_printf("Set_Command");
 	self->defaultfile = g_strdup_printf("%s/.anypaper/output.png", g_get_home_dir ());
 	self->interpolation = GDK_INTERP_BILINEAR;
+	self->jpegQuality = 85;
+	self->pngCompression = 9;
 }
 
 /**
@@ -120,6 +122,8 @@ void anypaper_parameters_load (AnypaperParameters *parameters, gchar *filename)
 	gchar *other, **field, **subfield;
 	int i,j=0,k,t=0;
 	int par_counter=0;
+
+	printf("%d", parameters->jpegQuality);
 	
 	if (g_file_get_contents (filename, &other, NULL, NULL))
 	{
@@ -183,6 +187,16 @@ void anypaper_parameters_load (AnypaperParameters *parameters, gchar *filename)
 					parameters->background = g_strdup_printf("%s", subfield[1]);
 					par_counter++;
 				}
+				if (!g_ascii_strcasecmp(subfield[0],"JPEGQuality"))
+				{
+					parameters->jpegQuality=g_ascii_strtoll(subfield[1], NULL, 10);//parameters->width=spi(subfield[1], 10);
+					par_counter++;
+				}
+				if (!g_ascii_strcasecmp(subfield[0],"PNGCompression"))
+				{
+					parameters->pngCompression=g_ascii_strtoll(subfield[1], NULL, 10);//parameters->width=spi(subfield[1], 10);
+					par_counter++;
+				}
 				if (!g_ascii_strcasecmp(subfield[0],"Command")) parameters->command = g_strdup_printf("%s", subfield[1]);
 				if (!g_ascii_strcasecmp(subfield[0],"DefaultFile")) parameters->defaultfile = g_strdup_printf("%s", subfield[1]);
 				if (!g_ascii_strcasecmp(subfield[0],"Interpolation")) parameters->interpolation = option_interpolation(subfield[1]);
@@ -234,7 +248,9 @@ BackgroundColor:        %s\n", parameters->file, style, parameters->positionx, p
 	buffer=g_strdup_printf("\
 Command:                   %s\n\
 DefaultFile:               %s\n\
-Interpolation:             %s\n", parameters->command, parameters->defaultfile, interpolation);
+Interpolation:             %s\n\
+JPEGQuality:               %d\n\
+PNGCompression:            %d\n", parameters->command, parameters->defaultfile, interpolation, parameters->jpegQuality, parameters->pngCompression);
 	g_file_set_contents (rcFile, buffer, -1, NULL);
 	g_free (buffer);
 }

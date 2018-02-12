@@ -28,7 +28,7 @@ Stable, unless otherwise indicated
 #include &lt;anypaper_preview.h&gt;
 
                     <link linkend="AnypaperPreviewPrivate">AnypaperPreviewPrivate</link>;
-                    <link linkend="AnypaperPreview-struct">AnypaperPreview</link>;
+struct              <link linkend="AnypaperPreview-struct">AnypaperPreview</link>;
 <link linkend="void"><returnvalue>void</returnvalue></link>                <link linkend="anypaper-preview-create">anypaper_preview_create</link>             (<parameter><link linkend="AnypaperPreview"><type>AnypaperPreview</type></link> *preview</parameter>,
                                                          <parameter><link linkend="AnypaperParameters"><type>AnypaperParameters</type></link> *parameters</parameter>,
                                                          <parameter><link linkend="AnypaperImage"><type>AnypaperImage</type></link> *image</parameter>);
@@ -57,9 +57,9 @@ The application class that builds a preview window using the images and paramete
 <para>
 </para></refsect2>
 <refsect2 id="AnypaperPreview-struct" role="struct">
-<title>AnypaperPreview</title>
+<title>struct AnypaperPreview</title>
 <indexterm zone="AnypaperPreview-struct"><primary>AnypaperPreview</primary></indexterm>
-<programlisting>typedef struct _AnypaperPreview AnypaperPreview;</programlisting>
+<programlisting>struct AnypaperPreview;</programlisting>
 <para>
 </para></refsect2>
 <refsect2 id="anypaper-preview-create" role="function">
@@ -72,14 +72,11 @@ The application class that builds a preview window using the images and paramete
 This function builds and shows the preview window
 </para><variablelist role="params">
 <varlistentry><term><parameter>preview</parameter>&#160;:</term>
-<listitem><simpara>is a <link linkend="AnypaperPreview"><type>AnypaperPreview</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>is a <link linkend="AnypaperPreview"><type>AnypaperPreview</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>contains the parameters used to make the images in <link linkend="AnypaperImage"><type>AnypaperImage</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>contains the parameters used to make the images in <link linkend="AnypaperImage"><type>AnypaperImage</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>image</parameter>&#160;:</term>
-<listitem><simpara>contains the images created before
-</simpara></listitem></varlistentry>
+<listitem><simpara>contains the images created before</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 
 </refsect1>

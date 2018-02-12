@@ -15,23 +15,23 @@
   </chapters>
   <functions>
     <keyword type="struct" name="AnypaperWallpapersetterPrivate" link="anypaper-anypaper-wallpapersetter.html#AnypaperWallpapersetterPrivate"/>
-    <keyword type="struct" name="AnypaperWallpapersetter" link="anypaper-anypaper-wallpapersetter.html#AnypaperWallpapersetter-struct"/>
+    <keyword type="struct" name="struct AnypaperWallpapersetter" link="anypaper-anypaper-wallpapersetter.html#AnypaperWallpapersetter-struct"/>
     <keyword type="function" name="anypaper_wallpapersetter_detect ()" link="anypaper-anypaper-wallpapersetter.html#anypaper-wallpapersetter-detect"/>
     <keyword type="function" name="anypaper_wallpapersetter_file ()" link="anypaper-anypaper-wallpapersetter.html#anypaper-wallpapersetter-file"/>
     <keyword type="struct" name="AnypaperPreviewPrivate" link="anypaper-anypaper-preview.html#AnypaperPreviewPrivate"/>
-    <keyword type="struct" name="AnypaperPreview" link="anypaper-anypaper-preview.html#AnypaperPreview-struct"/>
+    <keyword type="struct" name="struct AnypaperPreview" link="anypaper-anypaper-preview.html#AnypaperPreview-struct"/>
     <keyword type="function" name="anypaper_preview_create ()" link="anypaper-anypaper-preview.html#anypaper-preview-create"/>
     <keyword type="struct" name="AnypaperParametersPrivate" link="anypaper-anypaper-parameters.html#AnypaperParametersPrivate"/>
-    <keyword type="struct" name="AnypaperParameters" link="anypaper-anypaper-parameters.html#AnypaperParameters-struct"/>
+    <keyword type="struct" name="struct AnypaperParameters" link="anypaper-anypaper-parameters.html#AnypaperParameters-struct"/>
     <keyword type="function" name="anypaper_parameters_position_test ()" link="anypaper-anypaper-parameters.html#anypaper-parameters-position-test"/>
     <keyword type="function" name="anypaper_parameters_load ()" link="anypaper-anypaper-parameters.html#anypaper-parameters-load"/>
     <keyword type="function" name="anypaper_parameters_write ()" link="anypaper-anypaper-parameters.html#anypaper-parameters-write"/>
     <keyword type="struct" name="AnypaperImagePrivate" link="anypaper-anypaper-image.html#AnypaperImagePrivate"/>
-    <keyword type="struct" name="AnypaperImage" link="anypaper-anypaper-image.html#AnypaperImage-struct"/>
+    <keyword type="struct" name="struct AnypaperImage" link="anypaper-anypaper-image.html#AnypaperImage-struct"/>
     <keyword type="function" name="anypaper_image_make ()" link="anypaper-anypaper-image.html#anypaper-image-make"/>
     <keyword type="function" name="anypaper_image_move ()" link="anypaper-anypaper-image.html#anypaper-image-move"/>
     <keyword type="struct" name="AnypaperWindowPrivate" link="anypaper-anypaper-window.html#AnypaperWindowPrivate"/>
-    <keyword type="struct" name="AnypaperWindow" link="anypaper-anypaper-window.html#AnypaperWindow-struct"/>
+    <keyword type="struct" name="struct AnypaperWindow" link="anypaper-anypaper-window.html#AnypaperWindow-struct"/>
     <keyword type="function" name="anypaper_window_set_position_range ()" link="anypaper-anypaper-window.html#anypaper-window-set-position-range"/>
     <keyword type="function" name="anypaper_window_create ()" link="anypaper-anypaper-window.html#anypaper-window-create"/>
     <keyword type="macro" name="LICENSE" link="anypaper-anypaper-command.html#LICENSE:CAPS"/>

@@ -51,6 +51,7 @@ gchar *commandline;
 int x_position, y_position, height, width;
 double  x_scale, y_scale;
 gchar *background_color, *lastwallpaperfile, *rcfile, **remaining_args, *wallpapersetterfile;
+int jpeg_quality, png_compression;
 
 static GOptionEntry entries[] = 
 {
@@ -75,6 +76,8 @@ static GOptionEntry entries[] =
 	{ "command", 'u', G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_STRING, &commandline, "Set wallpapersetter command", NULL },
 	{ "no-set", 0, G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_NONE, &no_set, "Disable setting function", NULL },
 	{ "lastwallpaperfile", 'p', G_OPTION_ARG_FILENAME, G_OPTION_ARG_STRING, &lastwallpaperfile, "lastwallpaper file (default: ~/.anypaper/lastwallpaper)", NULL },
+	{ "JPEG-quality", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_INT, &jpeg_quality, "Set the quality of the saved JPEG file", NULL },
+	{ "PNG-compression", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_INT, &x_position, "Set the compression of the saved PNG file", NULL },
 	{ "rc", 0, G_OPTION_ARG_FILENAME, G_OPTION_ARG_STRING, &rcfile, "resource file (default: ~/.anypaper/anypaperrc)", NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &remaining_args, NULL, "[FILE...]" },
 	{ NULL }

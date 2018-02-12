@@ -33,6 +33,7 @@ gchar *commandline = NULL;
 int x_position = -65536, y_position = -65536, height = -65536, width = -65536;
 double  x_scale = -1, y_scale = -1;
 gchar *background_color = NULL, *lastwallpaperfile = NULL, *rcfile = NULL, **remaining_args = NULL, *wallpapersetterfile = NULL;
+int jpeg_quality = -65536, png_compression = -65536;
 
 int main( int argc, char *argv[] )
 {
@@ -173,7 +174,7 @@ int main( int argc, char *argv[] )
 		down_filename = g_ascii_strdown (window->parameters->defaultfile, -1);
 		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg"))) 
 		{
-			gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "jpeg", NULL, "quality", "100", NULL);
+			gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "jpeg", NULL, "quality", g_strdup_printf("%d", window->parameters->jpegQuality), NULL);
 			buffer=g_strdup_printf("%s \"%s\"", window->parameters->command, window->parameters->defaultfile);
 			if (g_spawn_command_line_sync (buffer, &std_out, &std_err, &exitStatus, &err) == FALSE)
 			{
@@ -199,7 +200,7 @@ int main( int argc, char *argv[] )
 		}
 		else if(g_str_has_suffix (down_filename, ".png"))
 		{
-			gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "png", NULL, NULL);
+			gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "png", NULL, "compression", g_strdup_printf("%d", window->parameters->pngCompression), NULL);
 			buffer=g_strdup_printf("%s \"%s\"", window->parameters->command, window->parameters->defaultfile);
 			if (g_spawn_command_line_sync (buffer, &std_out, &std_err, &exitStatus, &err) == FALSE)
 			{

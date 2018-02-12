@@ -43,6 +43,8 @@ AnypaperParameters
 @command: 
 @defaultfile: 
 @interpolation: 
+@jpegQuality: 
+@pngCompression: 
 
 <!-- ##### FUNCTION anypaper_parameters_position_test ##### -->
 <para>

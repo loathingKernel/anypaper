@@ -48,6 +48,12 @@ struct _AnypaperWindowPrivate {
 	GtkWidget *label2, *spin2;
 	GtkWidget *spin3;
 	GtkWidget *spin4;
+	
+	/*additions to the original code*/
+	GtkWidget *spin7;
+	GtkWidget *spin8;
+	/*end of additions*/
+
 	GtkWidget *def_entry;
 	GtkWidget *com_entry;
 	GtkWidget *combo_interpolation;
@@ -437,7 +443,7 @@ gboolean set_wallpaper_common ( AnypaperWindow *window )
 			}
 			else
 			{
-				gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "jpeg", NULL, "quality", "100", NULL);
+				gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "jpeg", NULL, "quality", g_strdup_printf("%d", window->parameters->jpegQuality), NULL);
 				buffer=g_strdup_printf("%s \"%s\"", window->parameters->command, window->parameters->defaultfile);
 				g_spawn_command_line_async (buffer, NULL);
 			}
@@ -454,7 +460,7 @@ gboolean set_wallpaper_common ( AnypaperWindow *window )
 			}
 			else
 			{
-				gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "png", NULL, NULL);
+				gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "png", NULL, "compression", g_strdup_printf("%d", window->parameters->pngCompression), NULL);
 				buffer=g_strdup_printf("%s \"%s\"", window->parameters->command, window->parameters->defaultfile);
 				g_spawn_command_line_async (buffer, NULL);
 			}
@@ -530,6 +536,7 @@ void save_file_as_cb( GtkWidget *widget, AnypaperWindow *window )
 	GtkWidget *dialog, *dialog_error;
 	GtkFileFilter *filterImages, *filterAll;
 
+		g_print("%d", window->parameters->jpegQuality);
 
 	dialog = gtk_file_chooser_dialog_new ("Save as...",
 					      GTK_WINDOW(window->priv->window),
@@ -557,11 +564,13 @@ void save_file_as_cb( GtkWidget *widget, AnypaperWindow *window )
 	{
 		char *filename, *down_filename;
 
+
+
 		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
 		down_filename = g_ascii_strdown (filename, -1);
 
-		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg"))) gdk_pixbuf_save (window->image->image, filename, "jpeg", NULL, "quality", "100", NULL);
-		else if(g_str_has_suffix (down_filename, ".png")) gdk_pixbuf_save (window->image->image, filename, "png", NULL, NULL);
+		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg"))) gdk_pixbuf_save (window->image->image, filename, "jpeg", NULL, "quality", g_strdup_printf("%d", window->parameters->jpegQuality), NULL);
+		else if(g_str_has_suffix (down_filename, ".png")) gdk_pixbuf_save (window->image->image, filename, "png", NULL, "compression", g_strdup_printf("%d", window->parameters->pngCompression), NULL);
 		else
 		{
 			dialog_error = gtk_message_dialog_new (GTK_WINDOW (window->priv->window), GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "Invalid format");
@@ -645,6 +654,12 @@ void load_rcfile_cb ( GtkWidget *widget, AnypaperWindow *window )
 	gtk_widget_destroy (dialog);
 }
 
+void set_image_quality_cb( GtkWidget *widget, AnypaperWindow *window )
+{
+	window->parameters->jpegQuality = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (window->priv->spin7));
+	window->parameters->pngCompression = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (window->priv->spin8));
+}
+
 void apply_cb( GtkWidget *widget, AnypaperWindow *window )
 {
 	set_wallpaper_common (window);
@@ -653,6 +668,15 @@ void apply_cb( GtkWidget *widget, AnypaperWindow *window )
 void ok_cb( GtkWidget *widget, AnypaperWindow *window )
 {
 	if (set_wallpaper_common (window) == TRUE) gtk_main_quit();
+}
+
+static gboolean key_press (GtkWidget *widget, GdkEventKey *ev)
+{
+	if (ev->keyval == GDK_Escape) {
+		gtk_widget_destroy (widget);
+		gtk_main_quit ();
+	}
+	return FALSE;
 }
 
 void about_window_cb( GtkWidget *widget, gpointer data )
@@ -692,7 +716,7 @@ void about_window_cb( GtkWidget *widget, gpointer data )
 				"version", VERSION,
 				"license", license,
 				"website", "anypaper.sourceforge.net",
-				"name", "nPaper",
+				"name", "anyPaper",
 				"wrap-license",TRUE,
 				NULL);
 
@@ -833,6 +857,9 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_window_set_icon_from_file (GTK_WINDOW(window), ANYPAPER_DATA "anypaper.png", NULL);
 
 	g_signal_connect (G_OBJECT (window), "delete_event", G_CALLBACK (gtk_main_quit), NULL);
+
+	gtk_signal_connect (GTK_OBJECT (window), "key_press_event", GTK_SIGNAL_FUNC (key_press), NULL);
+
 
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	
@@ -1043,7 +1070,7 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_notebook_append_page (GTK_NOTEBOOK(note), vbox1, label);
 	gtk_widget_show (label);
 
-	table = gtk_table_new (3, 3, FALSE);
+	table = gtk_table_new (3, 5, FALSE);
 
 	label = gtk_label_new ("Default output file: ");
 	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
@@ -1098,6 +1125,38 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_table_attach (GTK_TABLE (table), halign, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (priv->combo_interpolation);
 	gtk_widget_show (halign);
+
+	/*additions to the original code*/
+	label = gtk_label_new ("JPEG quality: ");
+	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_widget_show (label);
+
+	halign = gtk_alignment_new(0, 1, 0, 0);
+	priv->spin7 = gtk_spin_button_new_with_range (0, 100, 1);
+	gtk_container_add(GTK_CONTAINER(halign), priv->spin7);
+	gtk_spin_button_set_value(GTK_SPIN_BUTTON (priv->spin7), self->parameters->jpegQuality);
+	g_signal_connect (G_OBJECT (priv->spin7), "value-changed", G_CALLBACK (set_image_quality_cb), self);
+	gtk_table_attach (GTK_TABLE (table), halign, 1, 2, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_widget_show (priv->spin7);
+	gtk_widget_show (halign);
+
+	label = gtk_label_new ("PNG compression: ");
+	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 4, 5, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_widget_show (label);
+
+	halign = gtk_alignment_new(0, 1, 0, 0);
+	priv->spin8 = gtk_spin_button_new_with_range (0, 9, 1);
+	gtk_container_add(GTK_CONTAINER(halign), priv->spin8);
+	gtk_spin_button_set_value(GTK_SPIN_BUTTON (priv->spin8), self->parameters->pngCompression);
+	g_signal_connect (G_OBJECT (priv->spin8), "value-changed", G_CALLBACK (set_image_quality_cb), self);
+	gtk_table_attach (GTK_TABLE (table), halign, 1, 2, 4, 5, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_widget_show (priv->spin8);
+	gtk_widget_show (halign);
+	/*end of additions*/
 
 	gtk_box_pack_start (GTK_BOX(vbox1), table, FALSE, TRUE, 0);
 	gtk_widget_show (table);

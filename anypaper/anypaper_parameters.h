@@ -50,6 +50,8 @@ typedef struct _AnypaperParametersPrivate AnypaperParametersPrivate;
  * @command: command line used for setting the wallpaper
  * @defaultfile: default file for saving the built wallpaper
  * @interpolation: type of interpolation used
+ * @jpegQuality: quality parameter for JPEG files
+ * @pngCompression: compression parameter for PNG files
  * 
  * Contains the parameters used to build the images created by anyPaper
  */
@@ -72,6 +74,8 @@ struct _AnypaperParameters
 	gchar		*command;
 	gchar		*defaultfile;
 	GdkInterpType	interpolation;
+	gint		jpegQuality;
+	gint		pngCompression;
 	/*< private >*/
 };
 

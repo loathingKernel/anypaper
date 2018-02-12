@@ -28,7 +28,7 @@ Stable, unless otherwise indicated
 #include &lt;anypaper_image.h&gt;
 
                     <link linkend="AnypaperImagePrivate">AnypaperImagePrivate</link>;
-                    <link linkend="AnypaperImage-struct">AnypaperImage</link>;
+struct              <link linkend="AnypaperImage-struct">AnypaperImage</link>;
 <link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>            <link linkend="anypaper-image-make">anypaper_image_make</link>                 (<parameter><link linkend="AnypaperImage"><type>AnypaperImage</type></link> *image</parameter>,
                                                          <parameter><link linkend="AnypaperParameters"><type>AnypaperParameters</type></link> *parameters</parameter>);
 <link linkend="void"><returnvalue>void</returnvalue></link>                <link linkend="anypaper-image-move">anypaper_image_move</link>                 (<parameter><link linkend="AnypaperImage"><type>AnypaperImage</type></link> *image</parameter>,
@@ -61,23 +61,21 @@ The images present in <link linkend="AnypaperImage"><type>AnypaperImage</type></
 <para>
 </para></refsect2>
 <refsect2 id="AnypaperImage-struct" role="struct">
-<title>AnypaperImage</title>
+<title>struct AnypaperImage</title>
 <indexterm zone="AnypaperImage-struct"><primary>AnypaperImage</primary></indexterm>
-<programlisting>typedef struct {
+<programlisting>struct AnypaperImage {
 	GdkPixbuf *image;
 	GdkPixbuf *preview;
-} AnypaperImage;
+};
 </programlisting>
 <para>
 Contains the generated images used by the program
 </para><variablelist role="struct">
 <varlistentry><term><link linkend="GdkPixbuf"><type>GdkPixbuf</type></link>&#160;*<structfield id="AnypaperImage-struct.image">image</structfield>;</term>
-<listitem><simpara>contains the real size image created by anyPaper
-</simpara></listitem>
+<listitem><simpara>contains the real size image created by anyPaper</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="GdkPixbuf"><type>GdkPixbuf</type></link>&#160;*<structfield id="AnypaperImage-struct.preview">preview</structfield>;</term>
-<listitem><simpara>contains a thumbnail of the image created by anyPaper
-</simpara></listitem>
+<listitem><simpara>contains a thumbnail of the image created by anyPaper</simpara></listitem>
 </varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-image-make" role="function">
@@ -89,13 +87,10 @@ Contains the generated images used by the program
 Generate a <link linkend="GdkPixbuf"><type>GdkPixbuf</type></link> background and a <link linkend="GdkPixbuf"><type>GdkPixbuf</type></link> base image with the parameters selected in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>.
 </para><variablelist role="params">
 <varlistentry><term><parameter>image</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperImage"><type>AnypaperImage</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperImage"><type>AnypaperImage</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
-<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the image file is successfully opened, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if an error occurs
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara><link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the image file is successfully opened, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if an error occurs</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-image-move" role="function">
 <title>anypaper_image_move ()</title>
@@ -106,11 +101,9 @@ Generate a <link linkend="GdkPixbuf"><type>GdkPixbuf</type></link> background an
 Generate the <link linkend="GdkPixbuf"><type>GdkPixbuf</type></link> image and the <link linkend="GdkPixbuf"><type>GdkPixbuf</type></link> preview present in <link linkend="AnypaperImage"><type>AnypaperImage</type></link> struct with the parameters selected in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link> and the images created by <link linkend="anypaper-image-make"><function>anypaper_image_make()</function></link>
 </para><variablelist role="params">
 <varlistentry><term><parameter>image</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperImage"><type>AnypaperImage</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperImage"><type>AnypaperImage</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 </variablelist></refsect2>
 
 </refsect1>

@@ -1,3 +1,14 @@
+=== anyPaper 2.4 ===
+
+2013-30-03  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c: Added Escape button to exit.
+	* anypaper/anypaper_command.h, anypaper/anypaper_command.c, anypaper/anypaper_parameters.h, anypaper/anypaper_parameters.c, anypaper/anypaper_window.c: Added JPEG quality de PNG compression parameters.
+
+2013-29-03  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>
+
+	* anypaper/anypaper_window.c: Added JPEG quality de PNG compression spin buttons.
+
 === anyPaper 2.3 ===
 
 2010-26-08  Sergio Rodrigues de Oliveira Filho <cdvdt@users.sourceforge.net>

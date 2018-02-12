@@ -28,7 +28,7 @@ Stable, unless otherwise indicated
 #include &lt;anypaper_parameters.h&gt;
 
                     <link linkend="AnypaperParametersPrivate">AnypaperParametersPrivate</link>;
-                    <link linkend="AnypaperParameters-struct">AnypaperParameters</link>;
+struct              <link linkend="AnypaperParameters-struct">AnypaperParameters</link>;
 <link linkend="void"><returnvalue>void</returnvalue></link>                <link linkend="anypaper-parameters-position-test">anypaper_parameters_position_test</link>   (<parameter><link linkend="AnypaperParameters"><type>AnypaperParameters</type></link> *parameters</parameter>,
                                                          <parameter><link linkend="gint"><type>gint</type></link> rangex</parameter>,
                                                          <parameter><link linkend="gint"><type>gint</type></link> rangey</parameter>,
@@ -64,9 +64,9 @@ This application class manipulates the parameters used in anyPaper, also loads a
 <para>
 </para></refsect2>
 <refsect2 id="AnypaperParameters-struct" role="struct">
-<title>AnypaperParameters</title>
+<title>struct AnypaperParameters</title>
 <indexterm zone="AnypaperParameters-struct"><primary>AnypaperParameters</primary></indexterm>
-<programlisting>typedef struct {
+<programlisting>struct AnypaperParameters {
 	gchar		*file;
 	gint		style;
 	gint		positionx;
@@ -79,58 +79,54 @@ This application class manipulates the parameters used in anyPaper, also loads a
 	gchar		*command;
 	gchar		*defaultfile;
 	GdkInterpType&#160;interpolation;
-} AnypaperParameters;
+	gint		jpegQuality;
+	gint		pngCompression;
+};
 </programlisting>
 <para>
 Contains the parameters used to build the images created by anyPaper
 </para><variablelist role="struct">
 <varlistentry><term><link linkend="gchar"><type>gchar</type></link>&#160;*<structfield id="AnypaperParameters-struct.file">file</structfield>;</term>
-<listitem><simpara>filemane of source image
-</simpara></listitem>
+<listitem><simpara>filemane of source image</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.style">style</structfield>;</term>
-<listitem><simpara>selected style
-</simpara></listitem>
+<listitem><simpara>selected style</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.positionx">positionx</structfield>;</term>
-<listitem><simpara>position of image in x direction
-</simpara></listitem>
+<listitem><simpara>position of image in x direction</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.positiony">positiony</structfield>;</term>
-<listitem><simpara>position of image in y direction
-</simpara></listitem>
+<listitem><simpara>position of image in y direction</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gdouble"><type>gdouble</type></link>&#160;<structfield id="AnypaperParameters-struct.scalex">scalex</structfield>;</term>
-<listitem><simpara>scale factor in x direction
-</simpara></listitem>
+<listitem><simpara>scale factor in x direction</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gdouble"><type>gdouble</type></link>&#160;<structfield id="AnypaperParameters-struct.scaley">scaley</structfield>;</term>
-<listitem><simpara>scale factor in y direction
-</simpara></listitem>
+<listitem><simpara>scale factor in y direction</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.width">width</structfield>;</term>
-<listitem><simpara>width of image
-</simpara></listitem>
+<listitem><simpara>width of image</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.height">height</structfield>;</term>
-<listitem><simpara>height of image
-</simpara></listitem>
+<listitem><simpara>height of image</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gchar"><type>gchar</type></link>&#160;*<structfield id="AnypaperParameters-struct.background">background</structfield>;</term>
-<listitem><simpara>background color
-</simpara></listitem>
+<listitem><simpara>background color</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gchar"><type>gchar</type></link>&#160;*<structfield id="AnypaperParameters-struct.command">command</structfield>;</term>
-<listitem><simpara>command line used for setting the wallpaper
-</simpara></listitem>
+<listitem><simpara>command line used for setting the wallpaper</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="gchar"><type>gchar</type></link>&#160;*<structfield id="AnypaperParameters-struct.defaultfile">defaultfile</structfield>;</term>
-<listitem><simpara>default file for saving the built wallpaper
-</simpara></listitem>
+<listitem><simpara>default file for saving the built wallpaper</simpara></listitem>
 </varlistentry>
 <varlistentry><term><link linkend="GdkInterpType"><type>GdkInterpType</type></link>&#160;<structfield id="AnypaperParameters-struct.interpolation">interpolation</structfield>;</term>
-<listitem><simpara>type of interpolation used
-</simpara></listitem>
+<listitem><simpara>type of interpolation used</simpara></listitem>
+</varlistentry>
+<varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.jpegQuality">jpegQuality</structfield>;</term>
+<listitem><simpara>quality parameter for JPEG files</simpara></listitem>
+</varlistentry>
+<varlistentry><term><link linkend="gint"><type>gint</type></link>&#160;<structfield id="AnypaperParameters-struct.pngCompression">pngCompression</structfield>;</term>
+<listitem><simpara>compression parameter for PNG files</simpara></listitem>
 </varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-parameters-position-test" role="function">
@@ -145,20 +141,15 @@ Contains the parameters used to build the images created by anyPaper
 Sets the new position values if they are valid.
 </para><variablelist role="params">
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>rangex</parameter>&#160;:</term>
-<listitem><simpara>half of the displacement allowed in x direction
-</simpara></listitem></varlistentry>
+<listitem><simpara>half of the displacement allowed in x direction</simpara></listitem></varlistentry>
 <varlistentry><term><parameter>rangey</parameter>&#160;:</term>
-<listitem><simpara>half of the displacement allowed in y direction
-</simpara></listitem></varlistentry>
+<listitem><simpara>half of the displacement allowed in y direction</simpara></listitem></varlistentry>
 <varlistentry><term><parameter>positionx</parameter>&#160;:</term>
-<listitem><simpara>the selected position on x position
-</simpara></listitem></varlistentry>
+<listitem><simpara>the selected position on x position</simpara></listitem></varlistentry>
 <varlistentry><term><parameter>positiony</parameter>&#160;:</term>
-<listitem><simpara>the selected position on x position
-</simpara></listitem></varlistentry>
+<listitem><simpara>the selected position on x position</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-parameters-load" role="function">
 <title>anypaper_parameters_load ()</title>
@@ -169,11 +160,9 @@ Sets the new position values if they are valid.
 Sets the values of parameters on file in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>.
 </para><variablelist role="params">
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>filename</parameter>&#160;:</term>
-<listitem><simpara>name of file with the parameters to be loaded
-</simpara></listitem></varlistentry>
+<listitem><simpara>name of file with the parameters to be loaded</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 <refsect2 id="anypaper-parameters-write" role="function">
 <title>anypaper_parameters_write ()</title>
@@ -185,14 +174,11 @@ Sets the values of parameters on file in <link linkend="AnypaperParameters"><typ
 Saves the values of parameters in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link> on file.
 </para><variablelist role="params">
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>a <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>lastWallpaperFile</parameter>&#160;:</term>
-<listitem><simpara>name of file to be written with the lastwallpaper parameters in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>name of file to be written with the lastwallpaper parameters in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 <varlistentry><term><parameter>rcFile</parameter>&#160;:</term>
-<listitem><simpara>name of file to be written with the resource parameters in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
-</simpara></listitem></varlistentry>
+<listitem><simpara>name of file to be written with the resource parameters in <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link></simpara></listitem></varlistentry>
 </variablelist></refsect2>
 
 </refsect1>

@@ -103,5 +103,7 @@ void anypaper_command_load (AnypaperParameters *parameters)
 	if (height != -65536) parameters->height=height;
 	if (background_color != 0) parameters->background = g_strdup_printf("%s", background_color);
 	if (commandline != 0) parameters->command = g_strdup_printf("%s", commandline);
+	if (jpeg_quality != -65536) parameters->jpegQuality = jpeg_quality;
+	if (png_compression != -65536) parameters->pngCompression = png_compression;
 }
 

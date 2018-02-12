@@ -71,8 +71,7 @@ shows the version of anyPaper and the content of <link linkend="LICENSE:CAPS"><t
 This function reads the parameters passed by the command line and sets the value to the right member of <link linkend="AnypaperParameters"><type>AnypaperParameters</type></link>
 </para><variablelist role="params">
 <varlistentry><term><parameter>parameters</parameter>&#160;:</term>
-<listitem><simpara>object that contains the parameters used in anyPaper
-</simpara></listitem></varlistentry>
+<listitem><simpara>object that contains the parameters used in anyPaper</simpara></listitem></varlistentry>
 </variablelist></refsect2>
 
 </refsect1>

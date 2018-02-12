@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>AnypaperImage</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="anypaper Reference Manual">
 <link rel="up" href="ch01.html" title="anyPaper Classes">
 <link rel="prev" href="anypaper-anypaper-parameters.html" title="AnypaperParameters">
 <link rel="next" href="anypaper-anypaper-window.html" title="AnypaperWindow">
-<meta name="generator" content="GTK-Doc V1.14 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -28,7 +28,7 @@
                   <a href="#anypaper-anypaper-image.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
-<div class="refentry" title="AnypaperImage">
+<div class="refentry">
 <a name="anypaper-anypaper-image"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -37,31 +37,31 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="anypaper-anypaper-image.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="anypaper-anypaper-image.synopsis"></a><h2>Synopsis</h2>
 <a name="AnypaperImage"></a><pre class="synopsis">
 #include &lt;anypaper_image.h&gt;
 
                     <a class="link" href="anypaper-anypaper-image.html#AnypaperImagePrivate" title="AnypaperImagePrivate">AnypaperImagePrivate</a>;
-                    <a class="link" href="anypaper-anypaper-image.html#AnypaperImage-struct" title="AnypaperImage">AnypaperImage</a>;
+struct              <a class="link" href="anypaper-anypaper-image.html#AnypaperImage-struct" title="struct AnypaperImage">AnypaperImage</a>;
 <span class="returnvalue">gboolean</span>            <a class="link" href="anypaper-anypaper-image.html#anypaper-image-make" title="anypaper_image_make ()">anypaper_image_make</a>                 (<em class="parameter"><code><a class="link" href="anypaper-anypaper-image.html#AnypaperImage"><span class="type">AnypaperImage</span></a> *image</code></em>,
                                                          <em class="parameter"><code><a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a> *parameters</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="anypaper-anypaper-image.html#anypaper-image-move" title="anypaper_image_move ()">anypaper_image_move</a>                 (<em class="parameter"><code><a class="link" href="anypaper-anypaper-image.html#AnypaperImage"><span class="type">AnypaperImage</span></a> *image</code></em>,
                                                          <em class="parameter"><code><a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a> *parameters</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="anypaper-anypaper-image.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   GObject
    +----AnypaperImage
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="anypaper-anypaper-image.description"></a><h2>Description</h2>
 <p>
 This application class generates the images used by anyPaper
@@ -70,21 +70,21 @@ This application class generates the images used by anyPaper
 The images present in <a class="link" href="anypaper-anypaper-image.html#AnypaperImage"><span class="type">AnypaperImage</span></a> are created by <a class="link" href="anypaper-anypaper-image.html#anypaper-image-move" title="anypaper_image_move ()"><code class="function">anypaper_image_move()</code></a> using the parameters passed to function and images previously created by <a class="link" href="anypaper-anypaper-image.html#anypaper-image-make" title="anypaper_image_make ()"><code class="function">anypaper_image_make()</code></a>. The <a class="link" href="anypaper-anypaper-image.html#anypaper-image-make" title="anypaper_image_make ()"><code class="function">anypaper_image_make()</code></a> function modifies some parameters passed by <a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a> (mainly positionx and positiony, for indicating the range allowed for the variables) so they must be updated.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="anypaper-anypaper-image.details"></a><h2>Details</h2>
-<div class="refsect2" title="AnypaperImagePrivate">
+<div class="refsect2">
 <a name="AnypaperImagePrivate"></a><h3>AnypaperImagePrivate</h3>
 <pre class="programlisting">typedef struct _AnypaperImagePrivate AnypaperImagePrivate;</pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="AnypaperImage">
-<a name="AnypaperImage-struct"></a><h3>AnypaperImage</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="AnypaperImage-struct"></a><h3>struct AnypaperImage</h3>
+<pre class="programlisting">struct AnypaperImage {
 	GdkPixbuf *image;
 	GdkPixbuf *preview;
-} AnypaperImage;
+};
 </pre>
 <p>
 Contains the generated images used by the program
@@ -94,19 +94,17 @@ Contains the generated images used by the program
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">GdkPixbuf</span> *<em class="structfield"><code><a name="AnypaperImage-struct.image"></a>image</code></em>;</span></p></td>
-<td>contains the real size image created by anyPaper
-</td>
+<td>contains the real size image created by anyPaper</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">GdkPixbuf</span> *<em class="structfield"><code><a name="AnypaperImage-struct.preview"></a>preview</code></em>;</span></p></td>
-<td>contains a thumbnail of the image created by anyPaper
-</td>
+<td>contains a thumbnail of the image created by anyPaper</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="anypaper_image_make ()">
+<div class="refsect2">
 <a name="anypaper-image-make"></a><h3>anypaper_image_make ()</h3>
 <pre class="programlisting"><span class="returnvalue">gboolean</span>            anypaper_image_make                 (<em class="parameter"><code><a class="link" href="anypaper-anypaper-image.html#AnypaperImage"><span class="type">AnypaperImage</span></a> *image</code></em>,
                                                          <em class="parameter"><code><a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a> *parameters</code></em>);</pre>
@@ -128,14 +126,14 @@ Generate a <span class="type">GdkPixbuf</span> background and a <span class="typ
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <code class="literal">TRUE</code> if the image file is successfully opened, <code class="literal">FALSE</code> if an error occurs
-</td>
+<td>
+<code class="literal">TRUE</code> if the image file is successfully opened, <code class="literal">FALSE</code> if an error occurs</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="anypaper_image_move ()">
+<div class="refsect2">
 <a name="anypaper-image-move"></a><h3>anypaper_image_move ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                anypaper_image_move                 (<em class="parameter"><code><a class="link" href="anypaper-anypaper-image.html#AnypaperImage"><span class="type">AnypaperImage</span></a> *image</code></em>,
                                                          <em class="parameter"><code><a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a> *parameters</code></em>);</pre>
@@ -159,13 +157,13 @@ Generate the <span class="type">GdkPixbuf</span> image and the <span class="type
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="See Also">
+<div class="refsect1">
 <a name="anypaper-anypaper-image.see-also"></a><h2>See Also</h2>
 <a class="link" href="anypaper-anypaper-parameters.html#AnypaperParameters"><span class="type">AnypaperParameters</span></a>
 </div>
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.14</div>
+          Generated by GTK-Doc V1.18</div>
 </body>
 </html>

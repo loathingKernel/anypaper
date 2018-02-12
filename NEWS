@@ -1,5 +1,12 @@
 ============
-anyPaper 2.2
+anyPaper 2.4
+============
+
+- Added Escape button to exit.
+- Added JPEG quality de PNG compression parameters.
+
+============
+anyPaper 2.3
 ============
 
 - Changed behavior when the image file couldn't be opened
