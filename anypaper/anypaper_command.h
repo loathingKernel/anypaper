@@ -44,14 +44,14 @@ void show_license_and_exit (void);
 
 void anypaper_command_load ( AnypaperParameters *parameters );
 
-gboolean custom_scale_connect_state;
-gboolean fullscreen, normal, tile, maximize, scale, custom, set, last, no_set;
-gboolean info;
-gchar *commandline;
-int x_position, y_position, height, width;
-double  x_scale, y_scale;
-gchar *background_color, *lastwallpaperfile, *rcfile, **remaining_args, *wallpapersetterfile;
-int jpeg_quality, png_compression;
+extern gboolean custom_scale_connect_state;
+extern gboolean fullscreen, normal, tile, maximize, scale, custom, set, last, no_set;
+extern gboolean info;
+extern gchar *commandline;
+extern int x_position, y_position, height, width;
+extern double  x_scale, y_scale;
+extern gchar *background_color, *lastwallpaperfile, *rcfile, **remaining_args, *wallpapersetterfile;
+extern int jpeg_quality, png_compression;
 
 static GOptionEntry entries[] = 
 {

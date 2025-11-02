@@ -62,12 +62,6 @@ struct _AnypaperWindowPrivate {
 
 G_DEFINE_TYPE (AnypaperWindow, anypaper_window, G_TYPE_OBJECT);
 
-gboolean custom_scale_connect_state;
-gboolean fullscreen, normal, tile, maximize, scale, custom, set, last, no_set;
-int x_position, y_position, height, width;
-double  x_scale, y_scale;
-gchar *background_color, *lastwallpaperfile, *rcfile, **remaining_args;
-
 static gboolean delete_event( GtkWidget *widget, gpointer data )
 {
 	gtk_main_quit();
@@ -682,7 +676,7 @@ void ok_cb( GtkWidget *widget, AnypaperWindow *window )
 
 static gboolean key_press (GtkWidget *widget, GdkEventKey *ev)
 {
-	if (ev->keyval == GDK_Escape) {
+	if (ev->keyval == GDK_KEY_Escape) {
 		gtk_widget_destroy (widget);
 		gtk_main_quit ();
 	}
@@ -754,7 +748,7 @@ void detect_popup_cb( GtkWidget *widget, AnypaperWindow *window )
 		gtk_box_pack_start (GTK_BOX(box), label, FALSE, TRUE, 2);
 
 		halign = gtk_alignment_new(0, 1, 0, 0);
-		combo = gtk_combo_box_new_text ();
+		combo = gtk_combo_box_text_new ();
 		gtk_container_add(GTK_CONTAINER(halign), combo);
 
 		atual = g_list_first (window->wallpapersetter->wallpapersetter);
@@ -762,7 +756,7 @@ void detect_popup_cb( GtkWidget *widget, AnypaperWindow *window )
 
 		while (atual)
 		{
-			gtk_combo_box_append_text (GTK_COMBO_BOX (combo), atual->data);
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), atual->data);
 			atual = g_list_next(atual);
 		}
 
@@ -857,7 +851,7 @@ void anypaper_window_create (AnypaperWindow *self)
 
 	g_signal_connect (G_OBJECT (window), "delete_event", G_CALLBACK (gtk_main_quit), NULL);
 
-	gtk_signal_connect (GTK_OBJECT (window), "key_press_event", GTK_SIGNAL_FUNC (key_press), NULL);
+	g_signal_connect (G_OBJECT (window), "key_press_event", G_CALLBACK (key_press), NULL);
 
 
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
@@ -903,14 +897,14 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_widget_show (label);
 
 	halign = gtk_alignment_new(0, 1, 0, 0);
-	priv->combo = gtk_combo_box_new_text ();
+	priv->combo = gtk_combo_box_text_new ();
 	gtk_container_add(GTK_CONTAINER(halign), priv->combo);
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Fullscreen");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Normal");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Tiled");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Adjusted");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Scaled");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo), "Custom Scale");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Fullscreen");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Normal");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Tiled");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Adjusted");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Scaled");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo), "Custom Scale");
 	gtk_combo_box_set_active (GTK_COMBO_BOX (priv->combo), self->parameters->style);
 	g_signal_connect (G_OBJECT (priv->combo), "changed", G_CALLBACK (set_image_style_cb), self);
 	gtk_table_attach (GTK_TABLE (table), halign, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
@@ -1113,12 +1107,12 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_widget_show (label);
 
 	halign = gtk_alignment_new(0, 1, 0, 0);
-	priv->combo_interpolation = gtk_combo_box_new_text ();
+	priv->combo_interpolation = gtk_combo_box_text_new ();
 	gtk_container_add(GTK_CONTAINER(halign), priv->combo_interpolation);
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo_interpolation), "GDK_INTERP_NEAREST");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo_interpolation), "GDK_INTERP_TILES");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo_interpolation), "GDK_INTERP_BILINEAR");
-	gtk_combo_box_append_text (GTK_COMBO_BOX (priv->combo_interpolation), "GDK_INTERP_HYPER");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo_interpolation), "GDK_INTERP_NEAREST");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo_interpolation), "GDK_INTERP_TILES");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo_interpolation), "GDK_INTERP_BILINEAR");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->combo_interpolation), "GDK_INTERP_HYPER");
 	gtk_combo_box_set_active (GTK_COMBO_BOX (priv->combo_interpolation), interpolation_int (self->parameters->interpolation));
 	g_signal_connect (G_OBJECT (priv->combo_interpolation), "changed", G_CALLBACK (set_image_interpolation_cb), self);
 	gtk_table_attach (GTK_TABLE (table), halign, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);

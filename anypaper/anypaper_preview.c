@@ -136,7 +136,7 @@ static void image_fullscreen_button ( GtkWidget *widget, AnypaperPreview *previe
 
 static gboolean mouse_motion (GtkWidget *widget, GdkEventMotion *event, AnypaperPreview *preview)
 {
-	if (!GTK_WIDGET_VISIBLE (preview->priv->hbox))
+	if (!gtk_widget_get_visible (preview->priv->hbox))
 	{
 		gtk_widget_show(preview->priv->hbox);
 		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW(preview->priv->window2), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -158,10 +158,10 @@ static gboolean window_key_press (GtkWidget *widget, GdkEventKey *event, Anypape
 {
 	switch (event->keyval)
 	{
-		case GDK_Escape:
+		case GDK_KEY_Escape:
 			{
 				if (preview->priv->state == 1)	gtk_widget_activate(GTK_WIDGET(preview->priv->button));
-				else gtk_object_destroy(GTK_OBJECT(widget));
+				else gtk_widget_destroy(widget);
 				timeout_destroy(preview->priv->source);
 			}
 		break;
@@ -171,7 +171,7 @@ static gboolean window_key_press (GtkWidget *widget, GdkEventKey *event, Anypape
 static void show_preview_quit ( GtkWidget *widget, AnypaperPreview *preview)
 {
 	timeout_destroy(preview->priv->source);
-	gtk_object_destroy(GTK_OBJECT(preview->priv->window));
+	gtk_widget_destroy(preview->priv->window);
 }
 
 /**
@@ -239,5 +239,14 @@ void anypaper_preview_create (AnypaperPreview *preview, AnypaperParameters *para
 	g_signal_connect (G_OBJECT (event_box), "motion-notify-event", G_CALLBACK (mouse_motion), preview);
 
 	gtk_widget_show_all(preview->priv->window);
-	gtk_window_resize(GTK_WINDOW(preview->priv->window), MIN (screen_width/2, (preview->priv->window->allocation.width - window2->allocation.width + parameters->width + DELTA)), MIN (screen_height/2, (preview->priv->window->allocation.height - window2->allocation.height + parameters->height + DELTA)));
+	GtkAllocation* alloc = g_new(GtkAllocation, 1);
+	gtk_widget_get_allocation(preview->priv->window, alloc);
+	GtkAllocation* alloc2 = g_new(GtkAllocation, 1);
+	gtk_widget_get_allocation(window2, alloc2);
+	gtk_window_resize(GTK_WINDOW(preview->priv->window),
+		MIN (screen_width/2, (alloc->width - alloc2->width + parameters->width + DELTA)),
+		MIN (screen_height/2, (alloc->height - alloc2->height + parameters->height + DELTA))
+		);
+	g_free(alloc);
+	g_free(alloc2);
 }
