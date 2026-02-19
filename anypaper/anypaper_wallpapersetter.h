@@ -33,8 +33,8 @@
 #define ANYPAPER_IS_WALLPAPERSETTER_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), ANYPAPER_TYPE_WALLPAPERSETTER))
 #define ANYPAPER_WALLPAPERSETTER_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), ANYPAPER_TYPE_WALLPAPERSETTER, AnypaperWallpapersetterClass))
 
-typedef struct _AnypaperWallpapersetter        AnypaperWallpapersetter;
-typedef struct _AnypaperWallpapersetterClass   AnypaperWallpapersetterClass;
+typedef struct _AnypaperWallpapersetter AnypaperWallpapersetter;
+typedef struct _AnypaperWallpapersetterClass AnypaperWallpapersetterClass;
 
 typedef struct _AnypaperWallpapersetterPrivate AnypaperWallpapersetterPrivate;
 
@@ -46,26 +46,24 @@ typedef struct _AnypaperWallpapersetterPrivate AnypaperWallpapersetterPrivate;
  * Contains a list of wallpapersetter found and a list of commands used for them
  */
 
-struct _AnypaperWallpapersetter
-{
-	GObject parent_instance;
-	/* instance members */
-	/*< public >*/
-	GList	*wallpapersetter;
-	GList	*command;
+struct _AnypaperWallpapersetter {
+    GObject parent_instance;
+    /* instance members */
+    /*< public >*/
+    GList *wallpapersetter;
+    GList *command;
 
-	/*< private >*/
-	AnypaperWallpapersetterPrivate *priv;
+    /*< private >*/
+    AnypaperWallpapersetterPrivate *priv;
 };
 
-struct _AnypaperWallpapersetterClass
-{
-	GObjectClass parent_class;
+struct _AnypaperWallpapersetterClass {
+    GObjectClass parent_class;
 };
 
-GType anypaper_wallpapersetter_get_type (void);
+GType anypaper_wallpapersetter_get_type(void);
 
-void anypaper_wallpapersetter_detect (AnypaperWallpapersetter *wallpapersetter, gchar *filename);
+void anypaper_wallpapersetter_detect(AnypaperWallpapersetter *wallpapersetter, gchar *filename);
 
 void anypaper_wallpapersetter_file(gchar *wallpapersetterFile);
 

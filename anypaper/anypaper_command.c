@@ -33,10 +33,9 @@
 #include <gtk/gtk.h>
 #include "anypaper_command.h"
 
-static void show_version (void)
-{
-  g_print ("%s version %s", "anyPaper", VERSION);
-  g_print ("\n");
+static void show_version(void) {
+    g_print("%s version %s", "anyPaper", VERSION);
+    g_print("\n");
 }
 
 /**
@@ -44,11 +43,10 @@ static void show_version (void)
  * 
  * shows the version of anyPaper and exits
  */
-void show_version_and_exit (void)
-{
-  show_version ();
+void show_version_and_exit(void) {
+    show_version();
 
-  exit (EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 
 /**
@@ -57,25 +55,23 @@ void show_version_and_exit (void)
  * shows the version of anyPaper and the content of #LICENSE and exits
  */
 
-void show_license_and_exit (void)
-{
-  show_version ();
+void show_license_and_exit(void) {
+    show_version();
 
-  g_print ("\n" LICENSE "\n\n");
+    g_print("\n" LICENSE "\n\n");
 
-  exit (EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 
-static int option_command ()
-{
-	int c=6;
-	if (custom == TRUE) c=5;
-	if (scale == TRUE) c=4;
-	if (maximize == TRUE) c=3;
-	if (tile == TRUE) c=2;
-	if (normal == TRUE) c=1;
-	if (fullscreen == TRUE) c=0;
-	return c;
+static int option_command() {
+    int c = 6;
+    if (custom == TRUE) c = 5;
+    if (scale == TRUE) c = 4;
+    if (maximize == TRUE) c = 3;
+    if (tile == TRUE) c = 2;
+    if (normal == TRUE) c = 1;
+    if (fullscreen == TRUE) c = 0;
+    return c;
 }
 
 /**
@@ -84,26 +80,25 @@ static int option_command ()
  * 
  * This function reads the parameters passed by the command line and sets the value to the right member of #AnypaperParameters
  */
-void anypaper_command_load (AnypaperParameters *parameters)
-{
-	int e=6;
+void anypaper_command_load(AnypaperParameters *parameters) {
+    int e = 6;
 
-	e=option_command();
-	if (e != 6) parameters->style = e;
-	if (remaining_args != 0)
-	{
-		if (g_file_test(remaining_args[0], G_FILE_TEST_EXISTS)) parameters->file = g_strdup_printf("%s", remaining_args[0]);
-		else g_printerr("File not found (%s)\n", remaining_args[0]);
-	}
-	if (x_position != -65536) parameters->positionx=x_position;
-	if (y_position != -65536) parameters->positiony=y_position;
-	if (x_scale != -1) parameters->scalex=x_scale;
-	if (y_scale != -1) parameters->scaley=y_scale;
-	if (width != -65536) parameters->width=width;
-	if (height != -65536) parameters->height=height;
-	if (background_color != 0) parameters->background = g_strdup_printf("%s", background_color);
-	if (commandline != 0) parameters->command = g_strdup_printf("%s", commandline);
-	if (jpeg_quality != -65536) parameters->jpegQuality = jpeg_quality;
-	if (png_compression != -65536) parameters->pngCompression = png_compression;
+    e = option_command();
+    if (e != 6) parameters->style = e;
+    if (remaining_args != 0) {
+        if (g_file_test(remaining_args[0], G_FILE_TEST_EXISTS))
+            parameters->file = g_strdup_printf(
+                "%s", remaining_args[0]);
+        else g_printerr("File not found (%s)\n", remaining_args[0]);
+    }
+    if (x_position != -65536) parameters->positionx = x_position;
+    if (y_position != -65536) parameters->positiony = y_position;
+    if (x_scale != -1) parameters->scalex = x_scale;
+    if (y_scale != -1) parameters->scaley = y_scale;
+    if (width != -65536) parameters->width = width;
+    if (height != -65536) parameters->height = height;
+    if (background_color != 0) parameters->background = g_strdup_printf("%s", background_color);
+    if (commandline != 0) parameters->command = g_strdup_printf("%s", commandline);
+    if (jpeg_quality != -65536) parameters->jpegQuality = jpeg_quality;
+    if (png_compression != -65536) parameters->pngCompression = png_compression;
 }
-

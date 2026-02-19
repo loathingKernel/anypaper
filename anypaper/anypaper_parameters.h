@@ -31,8 +31,8 @@
 #define ANYPAPER_IS_PARAMETERS_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), ANYPAPER_TYPE_PARAMETERS))
 #define ANYPAPER_PARAMETERS_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), ANYPAPER_TYPE_PARAMETERS, AnypaperParametersClass))
 
-typedef struct _AnypaperParameters        AnypaperParameters;
-typedef struct _AnypaperParametersClass   AnypaperParametersClass;
+typedef struct _AnypaperParameters AnypaperParameters;
+typedef struct _AnypaperParametersClass AnypaperParametersClass;
 
 typedef struct _AnypaperParametersPrivate AnypaperParametersPrivate;
 
@@ -56,40 +56,39 @@ typedef struct _AnypaperParametersPrivate AnypaperParametersPrivate;
  * Contains the parameters used to build the images created by anyPaper
  */
 
-struct _AnypaperParameters
-{
-	GObject parent_instance;
+struct _AnypaperParameters {
+    GObject parent_instance;
 
-	/* instance members */
-	/*< public >*/
-	gchar		*file;
-	gint		style;
-	gint		positionx;
-	gint		positiony;
-	gdouble		scalex;
-	gdouble		scaley;
-	gint		width;
-	gint		height;
-	gchar		*background;
-	gchar		*command;
-	gchar		*defaultfile;
-	GdkInterpType	interpolation;
-	gint		jpegQuality;
-	gint		pngCompression;
-	/*< private >*/
+    /* instance members */
+    /*< public >*/
+    gchar *file;
+    gint style;
+    gint positionx;
+    gint positiony;
+    gdouble scalex;
+    gdouble scaley;
+    gint width;
+    gint height;
+    gchar *background;
+    gchar *command;
+    gchar *defaultfile;
+    GdkInterpType interpolation;
+    gint jpegQuality;
+    gint pngCompression;
+    /*< private >*/
 };
 
-struct _AnypaperParametersClass
-{
-  GObjectClass parent_class;
+struct _AnypaperParametersClass {
+    GObjectClass parent_class;
 };
 
-GType anypaper_parameters_get_type (void);
+GType anypaper_parameters_get_type(void);
 
-void anypaper_parameters_position_test (AnypaperParameters *parameters, gint rangex, gint rangey, gint positionx, gint positiony);
+void anypaper_parameters_position_test(AnypaperParameters *parameters, gint rangex, gint rangey, gint positionx,
+                                       gint positiony);
 
-void anypaper_parameters_load (AnypaperParameters *parameters, gchar *filename);
+void anypaper_parameters_load(AnypaperParameters *parameters, gchar *filename);
 
-void anypaper_parameters_write (AnypaperParameters *parameters, gchar *lastWallpaperFile, gchar *rcFile);
+void anypaper_parameters_write(AnypaperParameters *parameters, gchar *lastWallpaperFile, gchar *rcFile);
 
 #endif /* __ANYPAPER_PARAMETERS_H__ */

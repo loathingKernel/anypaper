@@ -32,8 +32,8 @@
 #define ANYPAPER_IS_IMAGE_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), ANYPAPER_TYPE_IMAGE))
 #define ANYPAPER_IMAGE_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), ANYPAPER_TYPE_IMAGE, AnypaperImageClass))
 
-typedef struct _AnypaperImage        AnypaperImage;
-typedef struct _AnypaperImageClass   AnypaperImageClass;
+typedef struct _AnypaperImage AnypaperImage;
+typedef struct _AnypaperImageClass AnypaperImageClass;
 
 typedef struct _AnypaperImagePrivate AnypaperImagePrivate;
 
@@ -45,27 +45,25 @@ typedef struct _AnypaperImagePrivate AnypaperImagePrivate;
  * Contains the generated images used by the program
  */
 
-struct _AnypaperImage
-{
-	GObject parent_instance;
-	/* instance members */
-	/*< public >*/
-	GdkPixbuf *image;
-	GdkPixbuf *preview;
+struct _AnypaperImage {
+    GObject parent_instance;
+    /* instance members */
+    /*< public >*/
+    GdkPixbuf *image;
+    GdkPixbuf *preview;
 
-	/*< private >*/
-	AnypaperImagePrivate *priv;
+    /*< private >*/
+    AnypaperImagePrivate *priv;
 };
 
-struct _AnypaperImageClass
-{
-	GObjectClass parent_class;
+struct _AnypaperImageClass {
+    GObjectClass parent_class;
 };
 
-GType anypaper_image_get_type (void);
+GType anypaper_image_get_type(void);
 
-gboolean anypaper_image_make (AnypaperImage *image, AnypaperParameters *parameters);
+gboolean anypaper_image_make(AnypaperImage *image, AnypaperParameters *parameters);
 
-void anypaper_image_move (AnypaperImage *image, AnypaperParameters *parameters);
+void anypaper_image_move(AnypaperImage *image, AnypaperParameters *parameters);
 
 #endif

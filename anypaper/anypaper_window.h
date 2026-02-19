@@ -36,8 +36,8 @@
 #define ANYPAPER_IS_WINDOW_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), ANYPAPER_TYPE_WINDOW))
 #define ANYPAPER_WINDOW_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), ANYPAPER_TYPE_WINDOW, AnypaperWindowClass))
 
-typedef struct _AnypaperWindow        AnypaperWindow;
-typedef struct _AnypaperWindowClass   AnypaperWindowClass;
+typedef struct _AnypaperWindow AnypaperWindow;
+typedef struct _AnypaperWindowClass AnypaperWindowClass;
 
 typedef struct _AnypaperWindowPrivate AnypaperWindowPrivate;
 
@@ -51,29 +51,27 @@ typedef struct _AnypaperWindowPrivate AnypaperWindowPrivate;
  * Contains the necessary objects for operation of the anyPaper
  */
 
-struct _AnypaperWindow
-{
-	GObject parent_instance;
-	/* instance members */
-	/*< public >*/
-	AnypaperParameters		*parameters;
-	AnypaperImage			*image;
-	AnypaperPreview			*preview;
-	AnypaperWallpapersetter		*wallpapersetter;
+struct _AnypaperWindow {
+    GObject parent_instance;
+    /* instance members */
+    /*< public >*/
+    AnypaperParameters *parameters;
+    AnypaperImage *image;
+    AnypaperPreview *preview;
+    AnypaperWallpapersetter *wallpapersetter;
 
-	/*< private >*/
-	AnypaperWindowPrivate	*priv;
+    /*< private >*/
+    AnypaperWindowPrivate *priv;
 };
 
-struct _AnypaperWindowClass
-{
-	GObjectClass parent_class;
+struct _AnypaperWindowClass {
+    GObjectClass parent_class;
 };
 
-GType anypaper_window_get_type (void);
+GType anypaper_window_get_type(void);
 
 void anypaper_window_set_position_range(AnypaperWindow *window, gint rangex, gint rangey);
 
-void anypaper_window_create (AnypaperWindow *window);
+void anypaper_window_create(AnypaperWindow *window);
 
 #endif /* __ANYPAPER_WINDOW_H__ */

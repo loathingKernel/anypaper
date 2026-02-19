@@ -33,28 +33,26 @@
 #define ANYPAPER_IS_PREVIEW_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), ANYPAPER_TYPE_PREVIEW))
 #define ANYPAPER_PREVIEW_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), ANYPAPER_TYPE_PREVIEW, AnypaperPreviewClass))
 
-typedef struct _AnypaperPreview        AnypaperPreview;
-typedef struct _AnypaperPreviewClass   AnypaperPreviewClass;
+typedef struct _AnypaperPreview AnypaperPreview;
+typedef struct _AnypaperPreviewClass AnypaperPreviewClass;
 
 typedef struct _AnypaperPreviewPrivate AnypaperPreviewPrivate;
 
-struct _AnypaperPreview
-{
-	GObject parent_instance;
+struct _AnypaperPreview {
+    GObject parent_instance;
 
-	/*< private >*/
-	AnypaperPreviewPrivate *priv;
+    /*< private >*/
+    AnypaperPreviewPrivate *priv;
 };
 
-struct _AnypaperPreviewClass
-{
-	GObjectClass parent_class;
+struct _AnypaperPreviewClass {
+    GObjectClass parent_class;
 
-	/* class members */
+    /* class members */
 };
 
-GType anypaper_preview_get_type (void);
+GType anypaper_preview_get_type(void);
 
-void anypaper_preview_create (AnypaperPreview *preview, AnypaperParameters *parameters, AnypaperImage *image);
+void anypaper_preview_create(AnypaperPreview *preview, AnypaperParameters *parameters, AnypaperImage *image);
 
 #endif /* __ANYPAPER_PREVIEW_H__ */
