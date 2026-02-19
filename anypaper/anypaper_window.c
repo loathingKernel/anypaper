@@ -48,7 +48,7 @@ struct _AnypaperWindowPrivate {
 	GtkWidget *label2, *spin2;
 	GtkWidget *spin3;
 	GtkWidget *spin4;
-	
+
 	/*additions to the original code*/
 	GtkWidget *spin7;
 	GtkWidget *spin8;
@@ -191,7 +191,7 @@ void open_image_file_cb ( GtkWidget *widget, AnypaperWindow *window )
 	gtk_file_chooser_set_filename(GTK_FILE_CHOOSER (dialog), gtk_entry_get_text (GTK_ENTRY (window->priv->file_entry)));
 	g_signal_connect (dialog, "update-preview", G_CALLBACK (update_preview_cb), preview);
 
-	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT) 
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
 		g_free(window->parameters->file);
 		window->parameters->file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
@@ -316,7 +316,7 @@ static void set_image_interpolation_cb ( GtkWidget *widget, AnypaperWindow *wind
 	if (i == 0) window->parameters->interpolation=GDK_INTERP_NEAREST;
 	if (i == 1) window->parameters->interpolation=GDK_INTERP_TILES;
 	if (i == 2) window->parameters->interpolation=GDK_INTERP_BILINEAR;
-	if (i == 3) window->parameters->interpolation=GDK_INTERP_HYPER;	
+	if (i == 3) window->parameters->interpolation=GDK_INTERP_HYPER;
 	positionx = window->parameters->positionx;
 	positiony = window->parameters->positiony;
 	anypaper_image_make (window->image, window->parameters);
@@ -349,7 +349,8 @@ gint interpolation_int (GdkInterpType interpolation)
 	return i;
 }
 
-/*gboolean set_wallpaper_common ( AnypaperWindow *window )
+/*
+gboolean set_wallpaper_common ( AnypaperWindow *window )
 {
 	GtkWidget *dialog;
 	char *buffer, *down_filename;
@@ -371,7 +372,7 @@ gint interpolation_int (GdkInterpType interpolation)
 	}
 	else
 	{
-		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg"))) 
+		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg")))
 		{
 			gdk_pixbuf_save (window->image->image, window->parameters->defaultfile, "jpeg", NULL, "quality", "100", NULL);
 			buffer=g_strdup_printf("%s \"%s\"", window->parameters->command, window->parameters->defaultfile);
@@ -409,7 +410,8 @@ gint interpolation_int (GdkInterpType interpolation)
 		if (result == TRUE) anypaper_parameters_write ( window->parameters, lastwallpaperfile, rcfile);
 	}
 	return result;
-}*/
+}
+*/
 
 gboolean set_wallpaper_common ( AnypaperWindow *window )
 {
@@ -435,7 +437,7 @@ gboolean set_wallpaper_common ( AnypaperWindow *window )
 	}
 	else
 	{
-		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg"))) 
+		if ((g_str_has_suffix (down_filename, ".jpg")) || (g_str_has_suffix (down_filename, ".jpeg")))
 		{
 			if (test_command_exists(window->parameters->command) == FALSE)
 			{
@@ -598,7 +600,7 @@ void load_lastwallpaperfile_cb ( GtkWidget *widget, AnypaperWindow *window )
 	dialog = gtk_file_chooser_dialog_new ("Open File", GTK_WINDOW(window->priv->window), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_filename(GTK_FILE_CHOOSER (dialog), lastwallpaperfile);
 
-	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT) 
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
 		block_callback(window);
 		g_free(lastwallpaperfile);
@@ -636,7 +638,7 @@ void load_rcfile_cb ( GtkWidget *widget, AnypaperWindow *window )
 	dialog = gtk_file_chooser_dialog_new ("Open File", GTK_WINDOW(window->priv->window), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_filename(GTK_FILE_CHOOSER (dialog), rcfile);
 
-	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT) 
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
 		block_callback(window);
 		g_free(rcfile);
@@ -790,7 +792,7 @@ void detect_popup_cb( GtkWidget *widget, AnypaperWindow *window )
  * @window: the #AnypaperWindow
  * @rangex: half of the displacement allowed in x direction
  * @rangey: half of the displacement allowed in y direction
- * 
+ *
  * Sets the range of displacement allowed for the image.
  */
 
@@ -800,7 +802,7 @@ void anypaper_window_set_position_range(AnypaperWindow *window, gint rangex, gin
 	if (rangex >= 0) gtk_spin_button_set_range (GTK_SPIN_BUTTON (window->priv->spin1), 0, 2 * rangex);
 	if (rangey < 0)	gtk_spin_button_set_range (GTK_SPIN_BUTTON (window->priv->spin2), (gdouble) 2 * rangey, 0);
 	if (rangey >= 0) gtk_spin_button_set_range (GTK_SPIN_BUTTON (window->priv->spin2), 0, 2 * rangey);
-	if (rangex == 0) 
+	if (rangex == 0)
 	{
 		gtk_widget_set_sensitive (window->priv->spin1, FALSE);
 		gtk_widget_set_sensitive (window->priv->label1, FALSE);
@@ -810,7 +812,7 @@ void anypaper_window_set_position_range(AnypaperWindow *window, gint rangex, gin
 		gtk_widget_set_sensitive (window->priv->spin1, TRUE);
 		gtk_widget_set_sensitive (window->priv->label1, TRUE);
 	}
-	if (rangey == 0) 
+	if (rangey == 0)
 	{
 		gtk_widget_set_sensitive (window->priv->spin2, FALSE);
 		gtk_widget_set_sensitive (window->priv->label2, FALSE);
@@ -824,7 +826,7 @@ void anypaper_window_set_position_range(AnypaperWindow *window, gint rangex, gin
 /**
  * anypaper_window_create:
  * @window: the #AnypaperWindow
- * 
+ *
  * Creates and shows the #AnypaperWindow.
  */
 
@@ -837,7 +839,7 @@ void anypaper_window_create (AnypaperWindow *self)
 	GtkWidget *image, *background;
 	GtkWidget *rmenu;
 	GtkWidget *button;
-	GtkWidget *note, *vbox1, *vbox2, *hbox1, *table, *halign;
+	GtkWidget *note, *vbox_form, *vbox_window, *hbox_image, *table, *halign;
 	gchar *filename, *buffer;
 	GdkPixbuf *tempbuf;
 	GdkColor color;
@@ -854,24 +856,28 @@ void anypaper_window_create (AnypaperWindow *self)
 	g_signal_connect (G_OBJECT (window), "key_press_event", G_CALLBACK (key_press), NULL);
 
 
-	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
-	
-	vbox2 = gtk_vbox_new (FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (window), 8);
 
-	gtk_container_add (GTK_CONTAINER (window), vbox2);
+	vbox_window = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+
+	gtk_container_add (GTK_CONTAINER (window), vbox_window);
 
 	note = gtk_notebook_new ();
 
-	vbox1 = gtk_vbox_new (FALSE, 10);
+	vbox_form = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+	gtk_widget_set_margin_top(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_bottom(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_start(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_end(GTK_WIDGET(vbox_form), 6);
 
 	label = gtk_label_new ("Wallpaper");
-	gtk_notebook_append_page (GTK_NOTEBOOK(note), vbox1, label);
+	gtk_notebook_append_page (GTK_NOTEBOOK(note), vbox_form, label);
 	gtk_widget_show (label);
-	
+
 	table = gtk_table_new (3, 4, FALSE);
 
 	label = gtk_label_new ("File: ");
-	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC(label), 1.0, 0.5);
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (label);
@@ -891,8 +897,8 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_widget_show (button);
 
 	label = gtk_label_new ("Style: ");
-	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_RIGHT);
-	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment (GTK_MISC(label), 1.0, 0.5);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (label);
 
@@ -914,7 +920,7 @@ void anypaper_window_create (AnypaperWindow *self)
 	priv->custom_table = gtk_table_new (2, 3, FALSE);
 
 	label = gtk_label_new ("Scale x: ");
-	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC(label), 1.0, 0.5);
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_table_attach (GTK_TABLE (priv->custom_table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (label);
@@ -967,13 +973,13 @@ void anypaper_window_create (AnypaperWindow *self)
 
 	gtk_widget_show (halign);
 
-	gtk_box_pack_start (GTK_BOX(vbox1), table, FALSE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox_form), table, FALSE, FALSE, 2);
 	gtk_widget_show (table);
 
-	hbox1 = gtk_hbox_new (FALSE, 0);
+	hbox_image = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
 	priv->preview = gtk_image_new_from_pixbuf(self->image->preview);
-	gtk_box_pack_start (GTK_BOX(hbox1), priv->preview, TRUE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX(hbox_image), priv->preview, TRUE, FALSE, 2);
 	gtk_widget_show (priv->preview);
 
 	table = gtk_table_new (5, 2, FALSE);
@@ -1031,17 +1037,17 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_table_attach (GTK_TABLE (table), button, 0, 2, 4, 5, GTK_SHRINK, GTK_SHRINK, 0, 0);
 	gtk_widget_show (button);
 
-	gtk_box_pack_start (GTK_BOX(hbox1), table, FALSE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(hbox_image), table, FALSE, TRUE, 0);
 	gtk_widget_show (table);
 
-	gtk_box_pack_start (GTK_BOX(vbox1), hbox1, FALSE, TRUE, 2);
-	gtk_widget_show (hbox1);
+	gtk_box_pack_start (GTK_BOX(vbox_form), hbox_image, FALSE, TRUE, 2);
+	gtk_widget_show (hbox_image);
 
-	hbox1 = gtk_hbox_new (FALSE, 0);
+	hbox_image = gtk_hbox_new (FALSE, 0);
 
 	button = gtk_button_new_with_mnemonic ("Show _Preview");
 	g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(show_window_preview_cb), self);
-	gtk_box_pack_start (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 	gtk_widget_show (button);
 
 	button = gtk_button_new_with_mnemonic ("Load lastwallpaper file");
@@ -1049,23 +1055,27 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_button_set_image (GTK_BUTTON(button), image);
 	gtk_widget_show (image);
 	g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (load_lastwallpaperfile_cb), self);
-	gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 	gtk_widget_show (button);
 
-	gtk_box_pack_start (GTK_BOX(vbox1), hbox1, FALSE, TRUE, 2);
-	gtk_widget_show (hbox1);
+	gtk_box_pack_start (GTK_BOX(vbox_form), hbox_image, FALSE, TRUE, 2);
+	gtk_widget_show (hbox_image);
 
-	gtk_widget_show (vbox1);
+	gtk_widget_show (vbox_form);
 
-	vbox1 = gtk_vbox_new (FALSE, 2);
+	vbox_form = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+	gtk_widget_set_margin_top(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_bottom(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_start(GTK_WIDGET(vbox_form), 6);
+	gtk_widget_set_margin_end(GTK_WIDGET(vbox_form), 6);
 
 	label = gtk_label_new ("Configuration");
-	gtk_notebook_append_page (GTK_NOTEBOOK(note), vbox1, label);
+	gtk_notebook_append_page (GTK_NOTEBOOK(note), vbox_form, label);
 	gtk_widget_show (label);
 
 	table = gtk_table_new (3, 5, FALSE);
 
-	label = gtk_label_new ("Default output file: ");
+	label = gtk_label_new ("Output file: ");
 	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
@@ -1084,12 +1094,12 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_table_attach (GTK_TABLE (table), button, 2, 3, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (button);
 
-	label = gtk_label_new ("Command (Wallpapersetter): ");
+	label = gtk_label_new ("Setter command: ");
 	gtk_misc_set_alignment (GTK_MISC(label), 0.0, 0.5);
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show (label);
-	
+
 	button = gtk_button_new_with_mnemonic ("Detect");
 	g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (detect_popup_cb), self);
 	gtk_table_attach (GTK_TABLE (table), button, 2, 3, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
@@ -1151,30 +1161,30 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_widget_show (halign);
 	/*end of additions*/
 
-	gtk_box_pack_start (GTK_BOX(vbox1), table, FALSE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox_form), table, FALSE, TRUE, 0);
 	gtk_widget_show (table);
 
-	hbox1 = gtk_hbox_new (FALSE, 0);
+	hbox_image = gtk_hbox_new (FALSE, 0);
 
 	button = gtk_button_new_with_mnemonic ("Load anypaperrc file");
 	image = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
 	gtk_button_set_image (GTK_BUTTON(button), image);
 	gtk_widget_show (image);
 	g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (load_rcfile_cb), self);
-	gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 	gtk_widget_show (button);
 
-	gtk_box_pack_end (GTK_BOX(vbox1), hbox1, FALSE, TRUE, 2);
-	gtk_widget_show (hbox1);
+	gtk_box_pack_end (GTK_BOX(vbox_form), hbox_image, FALSE, TRUE, 2);
+	gtk_widget_show (hbox_image);
 
-	gtk_widget_show (vbox1);
+	gtk_widget_show (vbox_form);
 
-	gtk_box_pack_start (GTK_BOX(vbox2), note, FALSE, TRUE, 0);
-	
-	hbox1 = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox_window), note, FALSE, TRUE, 0);
+
+	hbox_image = gtk_hbox_new (FALSE, 0);
 
 	if (no_set == FALSE)
-	{	
+	{
 		button = gtk_button_new_from_stock (GTK_STOCK_OK);
 		image = gtk_image_new_from_stock (GTK_STOCK_OK, GTK_ICON_SIZE_BUTTON);
 
@@ -1191,7 +1201,7 @@ void anypaper_window_create (AnypaperWindow *self)
 		g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(ok_cb), self);
 	}
 	else g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (delete_event), NULL);
-	gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 0);
 	gtk_widget_show (button);
 
 	if (no_set == FALSE)
@@ -1201,7 +1211,7 @@ void anypaper_window_create (AnypaperWindow *self)
 		gtk_button_set_image (GTK_BUTTON(button), image);
 		gtk_widget_show (image);
 		g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(apply_cb), self);
-		gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+		gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 		gtk_widget_show (button);
 
 		button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
@@ -1209,7 +1219,7 @@ void anypaper_window_create (AnypaperWindow *self)
 		gtk_button_set_image (GTK_BUTTON(button), image);
 		gtk_widget_show (image);
 		g_signal_connect (G_OBJECT (button), "clicked",	G_CALLBACK (delete_event), NULL);
-		gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+		gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 		gtk_widget_show (button);
 	}
 
@@ -1218,7 +1228,7 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_button_set_image (GTK_BUTTON(button), image);
 	gtk_widget_show (image);
 	g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (save_file_as_cb), self);
-	gtk_box_pack_end (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_end (GTK_BOX(hbox_image), button, FALSE, FALSE, 2);
 	gtk_widget_show (button);
 
 	button = gtk_button_new_from_stock (GTK_STOCK_ABOUT);
@@ -1226,13 +1236,13 @@ void anypaper_window_create (AnypaperWindow *self)
 	gtk_button_set_image (GTK_BUTTON(button), image);
 	gtk_widget_show (image);
 	g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(about_window_cb), G_OBJECT (window));
-	gtk_box_pack_start (GTK_BOX(hbox1), button, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX(hbox_image), button, FALSE, FALSE, 0);
 	gtk_widget_show (button);
 
-	gtk_box_pack_start (GTK_BOX(vbox2), hbox1, FALSE, TRUE, 0);
-	gtk_widget_show (hbox1);
+	gtk_box_pack_start (GTK_BOX(vbox_window), hbox_image, FALSE, TRUE, 0);
+	gtk_widget_show (hbox_image);
 
-	gtk_widget_show (vbox2);
+	gtk_widget_show (vbox_window);
 
 	gtk_widget_show (note);
 
